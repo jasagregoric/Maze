@@ -1,0 +1,93 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maze</title>
+    <link rel="stylesheet" href="main.css">
+    <style>
+        .swal2-input {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: rgba(10, 10, 10, 0.9);
+            border: 2px solid rgba(10, 10, 10, 0.9);
+        }
+        .swal2-input:focus {
+            box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.5);
+            color: rgba(10, 10, 10, 0.9);
+            border: 2px solid rgba(10, 10, 10, 0.9);
+        }
+
+        .swal2-input::placeholder {
+            color: rgba(20, 20, 20, 0.9); 
+        }
+    </style>
+</head>
+<body>
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="sound/theme.wav" type="audio/wav">
+        Your browser does not support the audio tag.
+    </audio>
+    <audio id="backgroundMusic2">
+        <source src="sound/key.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+    <audio id="backgroundMusic3">
+        <source src="sound/door.wav" type="audio/wav">
+        Your browser does not support the audio tag.
+    </audio>
+    <audio id="backgroundMusic4">
+        <source src="sound/open.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+    <div id="main">
+        <h1 id="titleBody">Hidden Maze</h1>
+        <div id="game">
+            <div id="maze">
+                <canvas id="canvas" width="825px" height="625px">
+                    <img src="img/tile2.png" id="tile">
+                    <img src="img/wall2.png" id="path">
+                    <img src="img/m2.png" id="man">
+                    <img src="img/door2.png" id="door">
+                    <img src="img/key2.png" id="key">
+                </canvas>
+                <img src="img/paper.png" id="paper" style="display: none;">
+                <div id="howtoplay" style="visibility: hidden;">
+                    <h1 id="ho">How To Play</h1>
+                    <ul>
+                        <li class="liH">Use W, A, S, D to move.</li>
+                        <li class="liH">You can also use Left, Right, Up, Down keys to move.</li>
+                        <li class="liH">The goal of the game is to escape the maze.</li>
+                    </ul>
+                    <button id="btn">OK</button>
+                </div>
+                <div class="table-container" id="sco" style="visibility: hidden;">
+                    <h1 id="h1Score">Score</h1>
+                    <div class="cont">
+                        <table id="scoreTable">
+                            <tr id="mainTr"><td>Rank</td><td>Name</td><td>Score</td></tr>
+                        </table>
+                    </div>
+                    <button id="tabBtn">Close</button>
+                </div>
+            </div>
+            <div id="side">
+                <div id="tasks">
+                    <span id="tsk">Tasks:</span>
+                    <ul>
+                        <li id="doorChk">Find an exit.</li>
+                        <li id="keyChk" style="visibility: hidden;">Find a key.</li>
+                        <li id="exit" style="visibility: hidden;">Exit the maze.</li>
+                    </ul>
+                </div>
+                <div id="pannel">
+                    <button id="restart">RESTART</button><br>
+                    <button id="how">HOW TO PLAY</button><br>
+                    <button id="score">SCORE</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+<script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</html>

@@ -1,0 +1,324 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url('img/forest.jpg');
+    font-family: game;
+    background-position: center bottom; 
+}
+
+.swal2-popup {
+    font-family: game;
+}
+
+#titleBody{
+    text-align: center;
+    font-size: 70px;
+    color: rgba(90, 80, 66, 0.95);
+}
+
+canvas{
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    margin-left: -21%;
+    background-color: white;
+}
+
+#howtoplay{
+    position: absolute;
+    z-index: 3;
+    margin-top: 5%;
+    width: 400;
+    height: 400px;
+    left: 50%;
+    margin-left: -200px;
+    background-image: url('img/bac.jpg');
+    color: rgba(10, 10, 10, 0.9);
+}
+
+#ho{
+    text-align: center;
+    font-size: 40px;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.liH{
+    margin-bottom: 10px;
+}
+
+#btn{
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: 20px;
+    width: 100px !important;
+}
+
+#paper{
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: 15%;
+}
+
+.table-container{
+    color: rgba(10, 10, 10, 0.9);
+    margin-top: 37px;
+    position: absolute;
+    left: 50%;
+    margin-left: -200px;
+    z-index: 4;
+    width: 400px;
+    height: 550px;
+    background-image: url('img/bac.jpg');
+}
+
+#h1Score{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 40px;
+}
+
+.cont{
+    width: 400px;
+    height: 380px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    overflow-x: auto;
+}
+
+#scoreTable{
+    width: 100%;
+    height: fit-content;
+    border-collapse: collapse;
+}
+
+#mainTr{
+    height: 30px;
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.row{
+    font-size: 20px;
+    text-align: center;
+    height: 40px;
+    border-bottom: 1px solid black;
+}
+
+#tabBtn{
+    width: 100px;
+    margin-left: 150px;
+    margin-top: 25px;
+}
+
+#game{
+    display: inline;
+    margin-top: 1%;
+    width: 1174px;
+    height: 625px;
+}
+
+#maze{
+    float: left;
+    width: fit-content;
+    height: fit-content;
+
+}
+#side{
+    height: 625px;
+    width: 300px;
+    float: right;
+    margin-right: 11%;
+}
+
+#tasks{
+    border-radius: 3px;
+    width: 280px;
+    height: 205px;
+    background-image: url('img/bac.jpg');
+    opacity: 0.9;
+    padding-left: 20px;
+    padding-top: 15px;
+    color: rgba(10, 10, 10, 0.9);
+}
+
+#tsk{
+    width: 100px;
+    font-size: 35px;
+    font-weight: 600;
+}
+
+ul{
+    margin-left: 35px;
+    margin-top: 2px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+#pannel {
+    border-radius: 3px;
+    margin-top: 15px;
+    width: 300px;
+    height: 390px;
+    background-image: url('img/bac.jpg');
+    opacity: 0.9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center horizontally */
+}
+
+button {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    width: 200px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgb(0, 0, 0);
+    font-size: 17px;
+    font-weight: 600;
+    color: rgba(10, 10, 10, 0.9);
+    font-family: game;
+}
+
+button:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.custom-submit-button {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: rgba(10, 10, 10, 0.9);
+}
+.custom-submit-button:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+@font-face {
+    font-family: game;
+    src: url('foul.ttf');
+}
+
+.cont::-webkit-scrollbar {
+    display: none;
+}
+
+@media only screen and (max-width: 1850px) {
+    canvas{
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        margin-left: -24%;
+        background-color: white;
+    }
+    #side{
+        height: 625px;
+        width: 300px;
+        float: right;
+        margin-right: 10%;
+    }
+}
+
+@media only screen and (max-width: 1800px) {
+    canvas{
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        margin-left: -25%;
+        background-color: white;
+    }
+    #side{
+        height: 625px;
+        width: 300px;
+        float: right;
+        margin-right: 10%;
+    }
+}
+
+@media only screen and (max-width: 1700px) {
+    canvas{
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        margin-left: -29%;
+        background-color: white;
+    }
+    #side{
+        height: 625px;
+        width: 300px;
+        float: right;
+        margin-right: 9%;
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    canvas{
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        margin-left: -33%;
+        background-color: white;
+    }
+    #side{
+        height: 625px;
+        width: 300px;
+        float: right;
+        margin-right: 8%;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    canvas{
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        margin-left: -37%;
+        background-color: white;
+    }
+    #side{
+        height: 625px;
+        width: 300px;
+        float: right;
+        margin-right: 7%;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    canvas{
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        margin-left: -42%;
+        background-color: white;
+    }
+    #side{
+        height: 625px;
+        width: 300px;
+        float: right;
+        margin-right: 6%;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    canvas{
+        position: absolute;
+        z-index: 1;
+        left: 50%;
+        margin-left: -45%;
+        background-color: white;
+    }
+    #side{
+        height: 625px;
+        width: 300px;
+        float: right;
+        margin-right: 5%;
+    }
+}
