@@ -204,7 +204,7 @@ button:hover{
 
 @font-face {
     font-family: game;
-    src: url('foul.ttf');
+    src: url('/foul.ttf');
 }
 
 .cont::-webkit-scrollbar {
