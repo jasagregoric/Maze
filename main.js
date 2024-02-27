@@ -248,7 +248,7 @@ function map() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawLab();
     ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.98)';
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drawLightCircle(playerX * 25 + 12.5, playerY * 25 + 12.5);
