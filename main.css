@@ -4,8 +4,7 @@
 }
 
 body{
-    /*background-image: url('img/forest.jpg');*/
-    background-color: #090909;
+    background-image: url('img/background2.jpg');
     font-family: game;
     background-position: center bottom; 
 }
@@ -17,8 +16,7 @@ body{
 #titleBody{
     text-align: center;
     font-size: 70px;
-    margin-top: 3%;
-    color: rgba(240, 240, 240, 0.9);
+    color: rgba(90, 80, 66, 0.95);
 }
 
 canvas{
@@ -27,7 +25,6 @@ canvas{
     left: 50%;
     margin-left: -21%;
     background-color: white;
-    border: 2px solid white;
 }
 
 #howtoplay{
@@ -149,7 +146,7 @@ canvas{
     padding-left: 20px;
     padding-top: 15px;
     color: rgba(10, 10, 10, 0.9);
-    border: 2px solid white;
+    box-shadow: 6px 6px 5px;
 }
 
 #tsk{
@@ -176,7 +173,7 @@ ul{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid white;
+    box-shadow: 6px 6px 5px;
 }
 
 button {
@@ -209,7 +206,7 @@ button:hover{
 
 @font-face {
     font-family: game;
-    src: url('./foul.ttf');
+    src: url('./foul2.ttf');
 }
 
 .cont::-webkit-scrollbar {

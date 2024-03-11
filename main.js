@@ -28,7 +28,7 @@ let path = [
 
 const tile = document.getElementById("tile");
 const wall = document.getElementById("path");
-const m = document.getElementById("man");
+var m = document.getElementById("man");
 const door = document.getElementById("door");
 const key = document.getElementById("key");
 var canvas = document.getElementById("canvas");
@@ -143,6 +143,7 @@ document.addEventListener("keydown", (e) => {
         case "d":
         case "D":
         case "ArrowRight":
+            m = document.getElementById("man");
             if(played==false ){
                 backgroundMusic.play();
                 played = true;
@@ -152,14 +153,12 @@ document.addEventListener("keydown", (e) => {
                 path[playerY]=rep(playerX, ".", path[playerY]);
                 path[playerY]=rep(playerX+1, "P", path[playerY]);
                 playerX++;
-                map();
             }
             else if(path[playerY][playerX+1]=="K"){
                 hasKey = true;
                 path[playerY]=rep(playerX, ".", path[playerY]);
                 path[playerY]=rep(playerX+1, "P", path[playerY]);
                 playerX++;
-                map();
                 backgroundMusic2.volume = 0.7;
                 backgroundMusic2.play();
                 keyChk.style.textDecoration="line-through";
@@ -173,7 +172,6 @@ document.addEventListener("keydown", (e) => {
                     path[playerY]=rep(playerX, ".", path[playerY]);
                     path[playerY]=rep(playerX+1, "P", path[playerY]);
                     playerX++;
-                    map();
                     endTime = performance.now();
                     time=endTime-startTime;
                     score=(600000 - time) / (600000 - 10000) * 1000;
@@ -213,21 +211,23 @@ document.addEventListener("keydown", (e) => {
                     
                 }
             }
+            map();
             break;
         case "a":
         case "A":
         case "ArrowLeft":
+            m = document.getElementById("man2");
             if(path[playerY][playerX-1]=="."){
                 path[playerY]=rep(playerX, ".", path[playerY]);
                 path[playerY]=rep(playerX-1, "P", path[playerY]);
                 playerX--;
-                map();
             }
             if(played==false ){
                 backgroundMusic.play();
                 played = true;
                 startTime = performance.now();
             }
+            map();
             break;
     }
 });
@@ -248,7 +248,7 @@ function map() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawLab();
     ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.98)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drawLightCircle(playerX * 25 + 12.5, playerY * 25 + 12.5);
