@@ -58,7 +58,7 @@ var played = false;
 
 var startTime;
 var endTime;
-var time;
+var time=0;
 var score;
 var player;
 
@@ -173,7 +173,7 @@ document.addEventListener("keydown", (e) => {
                     path[playerY]=rep(playerX+1, "P", path[playerY]);
                     playerX++;
                     endTime = performance.now();
-                    time=endTime-startTime;
+                    time+=(endTime-startTime);
                     score=(600000 - time) / (600000 - 10000) * 1000;
                     score=score.toFixed(0);
                     console.log(score);
@@ -229,7 +229,13 @@ document.addEventListener("keydown", (e) => {
             }
             map();
             break;
+        case "F2":
+            discoverMap();
+            setTimeout(map, 5000);
+            startTime-=20000;
+            break;
     }
+    //if(e.which==113)
 });
 
 function drawLightCircle(x, y) {
@@ -252,6 +258,14 @@ function map() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drawLightCircle(playerX * 25 + 12.5, playerY * 25 + 12.5);
+}
+
+function discoverMap() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawLab();
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function drawLab() {

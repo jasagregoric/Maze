@@ -4,7 +4,8 @@
 }
 
 body{
-    background-image: url('img/background2.jpg');
+    /*background-image: url('img/background2.jpg');*/
+    background-color: #020202;
     font-family: game;
     background-position: center bottom; 
 }
@@ -30,9 +31,9 @@ canvas{
 #howtoplay{
     position: absolute;
     z-index: 3;
-    margin-top: 5%;
+    margin-top: 3%;
     width: 400;
-    height: 400px;
+    height: 550px;
     left: 50%;
     margin-left: -200px;
     background-image: url('img/bac.jpg');
