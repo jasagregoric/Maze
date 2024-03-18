@@ -1,16 +1,16 @@
 let path = [
     "#################################",
-    "#...#...............#...........#",
+    "#C..#...............#...........#",
     "###.#.#############.#.#########.#",
     "#...#.#.........#.#.#...#.....#.#",
     "#.###.#.#####.#.#.#.#.#.###.###.#",
     "#.....#...#.#.#...#.#.#...#.....#",
-    "#########.#.#.###.#.#.###.#.#####",
-    "#....K#.....#.#.#.#.#P#...#.....#",
+    "#########.#.#C###.#.#.###.#.#####",
+    "#....K#.....#.#.#.#.#P#...#..C..#",
     "#.#####.#####.#.#.#.###.#######.#",
     "#.....#.#.....#...#...#.#.#.....#",
-    "#####.#.#.#####.#####.#.#.#.#####",
-    "#.....#.#.#...#.#...#.#.#...#...#",
+    "#####.#.#.#####.#####.#C#.#.#####",
+    "#.....#.#.#.C.#.#...#.#.#...#...#",
     "#.#####.#.#.#.#.#.#.#.#.#.###.#.#",
     "#.#.....#.#.#.#.#.#.#...#.....#.#",
     "#.#.#####.###.#.#.#.###########.#",
@@ -18,11 +18,11 @@ let path = [
     "#.###.#.###.#####.###.###.#.#.###",
     "#...#.....#...#.....#...#.#.#.#.#",
     "#.#######.###.#.#######.#.#.#.#.#",
-    "#.......#...#...#...#...#...#...#",
+    "#..C....#...#...#...#...#...#...#",
     "#####.#.###.#####.#.#.###.#####.#",
     "#.....#...#.#.....#...#...#...#.#",
     "#.#########.#.#############.#.#.#",
-    "#...........#...............#...D",
+    "#...........#....C..........#...D",
     "#################################"
 ]
 
@@ -31,6 +31,7 @@ const wall = document.getElementById("path");
 var m = document.getElementById("man");
 const door = document.getElementById("door");
 const key = document.getElementById("key");
+const coin = document.getElementById("coin");
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var backgroundMusic = document.getElementById('backgroundMusic');
@@ -61,6 +62,7 @@ var endTime;
 var time=0;
 var score;
 var player;
+var coins=0;
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -108,7 +110,6 @@ tabBtn.addEventListener("click", function(){
 
 document.addEventListener("keydown", (e) => {
     const key=e.key;
-    
     switch(key){
         case "w":
         case "W":
@@ -117,6 +118,15 @@ document.addEventListener("keydown", (e) => {
                 path[playerY]=rep(playerX, ".", path[playerY]);
                 path[playerY-1]=rep(playerX, "P", path[playerY-1]);
                 playerY--;
+                map();
+            }
+            else if(path[playerY-1][playerX]=="C"){
+                path[playerY]=rep(playerX, ".", path[playerY]);
+                path[playerY-1]=rep(playerX, "P", path[playerY-1]);
+                playerY--;
+                coins+=20;
+                backgroundMusic2.volume = 0.7;
+                backgroundMusic2.play();
                 map();
             }
             if(played==false ){
@@ -132,6 +142,15 @@ document.addEventListener("keydown", (e) => {
                 path[playerY]=rep(playerX, ".", path[playerY]);
                 path[playerY+1]=rep(playerX, "P", path[playerY+1]);
                 playerY++;
+                map();
+            }
+            else if(path[playerY+1][playerX]=="C"){
+                path[playerY]=rep(playerX, ".", path[playerY]);
+                path[playerY+1]=rep(playerX, "P", path[playerY+1]);
+                coins+=20;
+                playerY++;
+                backgroundMusic2.volume = 0.7;
+                backgroundMusic2.play();
                 map();
             }
             if(played==false ){
@@ -174,7 +193,8 @@ document.addEventListener("keydown", (e) => {
                     playerX++;
                     endTime = performance.now();
                     time+=(endTime-startTime);
-                    score=(600000 - time) / (600000 - 10000) * 1000;
+                    score=(600000 - time) / (700000) * 1000+coins;
+                    time=(time/1000).toFixed(0);
                     score=score.toFixed(0);
                     console.log(score);
                     backgroundMusic4.play();
@@ -189,7 +209,7 @@ document.addEventListener("keydown", (e) => {
                             if (storedDataString) {
                                 storedData = JSON.parse(storedDataString);
                             }
-                            const playerData = { name: player, score: score };
+                            const playerData = { name: player, score: score, time: time };
                             storedData.push(playerData);
                             storedDataString = JSON.stringify(storedData);
 
@@ -211,6 +231,14 @@ document.addEventListener("keydown", (e) => {
                     
                 }
             }
+            else if(path[playerY][playerX+1]=="C"){
+                path[playerY]=rep(playerX, ".", path[playerY]);
+                path[playerY]=rep(playerX+1, "P", path[playerY]);
+                coins+=20;
+                playerX++;
+                backgroundMusic2.volume = 0.7;
+                backgroundMusic2.play();
+            }
             map();
             break;
         case "a":
@@ -222,6 +250,14 @@ document.addEventListener("keydown", (e) => {
                 path[playerY]=rep(playerX-1, "P", path[playerY]);
                 playerX--;
             }
+            else if(path[playerY][playerX-1]=="C"){
+                path[playerY]=rep(playerX, ".", path[playerY]);
+                path[playerY]=rep(playerX-1, "P", path[playerY]);
+                coins+=20;
+                playerX--;
+                backgroundMusic2.volume = 0.7;
+                backgroundMusic2.play();
+            }
             if(played==false ){
                 backgroundMusic.play();
                 played = true;
@@ -230,12 +266,16 @@ document.addEventListener("keydown", (e) => {
             map();
             break;
         case "F2":
+            if(played==false ){
+                backgroundMusic.play();
+                played = true;
+                startTime = performance.now();
+            }
             discoverMap();
             setTimeout(map, 5000);
             startTime-=20000;
             break;
     }
-    //if(e.which==113)
 });
 
 function drawLightCircle(x, y) {
@@ -281,6 +321,8 @@ function drawLab() {
                 ctx.drawImage(door, x, y);
             }else if(path[i][j]=="K"){
                 ctx.drawImage(key, x, y);
+            }else if(path[i][j]=="C"){
+                ctx.drawImage(coin, x, y);
             }else {
                 ctx.drawImage(wall, x, y);
             }
@@ -339,10 +381,13 @@ function generateTable(sortedData) {
     nameCell2.textContent = "Name";
     const scoreCell2 = document.createElement("td");
     scoreCell2.textContent = "Score";
+    const timeCell2 = document.createElement("td");
+    timeCell2.textContent = "Time(s)";
 
     row2.appendChild(rankCell2);
     row2.appendChild(nameCell2);
     row2.appendChild(scoreCell2);
+    row2.appendChild(timeCell2);
 
     tableBody.appendChild(row2);
 
@@ -357,10 +402,14 @@ function generateTable(sortedData) {
         nameCell.textContent = playerData.name;
         const scoreCell = document.createElement("td");
         scoreCell.textContent = playerData.score;
+        const timeCell = document.createElement("td");
+        timeCell.textContent = playerData.time;
 
         row.appendChild(rankCell);
         row.appendChild(nameCell);
         row.appendChild(scoreCell);
+        row.appendChild(scoreCell);
+        row.appendChild(timeCell);
 
         tableBody.appendChild(row);
     });
