@@ -64,6 +64,12 @@ var score;
 var player;
 var coins=0;
 
+var endt=false;
+
+var s=0;
+var mi=0;
+var timer= document.getElementById('timeS');
+
 
 document.addEventListener("DOMContentLoaded", function() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -133,6 +139,7 @@ document.addEventListener("keydown", (e) => {
                 backgroundMusic.play();
                 played = true;
                 startTime = performance.now();
+                setInterval(timeC, 1000);
             }
             break;
         case "s":
@@ -157,6 +164,7 @@ document.addEventListener("keydown", (e) => {
                 backgroundMusic.play();
                 played = true;
                 startTime = performance.now();
+                setInterval(timeC, 1000);
             }
             break;
         case "d":
@@ -167,6 +175,7 @@ document.addEventListener("keydown", (e) => {
                 backgroundMusic.play();
                 played = true;
                 startTime = performance.now();
+                setInterval(timeC, 1000);
             }
             if(path[playerY][playerX+1]=="."){
                 path[playerY]=rep(playerX, ".", path[playerY]);
@@ -193,6 +202,7 @@ document.addEventListener("keydown", (e) => {
                     playerX++;
                     endTime = performance.now();
                     time+=(endTime-startTime);
+                    endt=true;
                     score=(600000 - time) / (700000) * 1000+coins;
                     time=(time/1000).toFixed(0);
                     score=score.toFixed(0);
@@ -262,6 +272,7 @@ document.addEventListener("keydown", (e) => {
                 backgroundMusic.play();
                 played = true;
                 startTime = performance.now();
+                setInterval(timeC, 1000);
             }
             map();
             break;
@@ -270,6 +281,7 @@ document.addEventListener("keydown", (e) => {
                 backgroundMusic.play();
                 played = true;
                 startTime = performance.now();
+                setInterval(timeC, 1000);
             }
             discoverMap();
             setTimeout(map, 5000);
@@ -277,6 +289,24 @@ document.addEventListener("keydown", (e) => {
             break;
     }
 });
+
+function timeC(){
+    console.log("ok");
+    s++;
+    if(s==60){
+        mi++;
+        s=0;
+    }
+    if(mi==0){min="00";}
+    else if(mi<10){min=("0"+mi);}
+    else{min=mi+"";}
+
+    if(s==0){sec="00";}
+    else if(s<10){sec=("0"+s);}
+    else{sec=s+"";}
+
+    if(endt==false){timer.innerHTML=(min+":"+sec);}
+}
 
 function drawLightCircle(x, y) {
     ctx.save(); // Save the current canvas state
